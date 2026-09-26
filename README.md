@@ -1,0 +1,154 @@
+# Staffcode
+
+Staffcode is a stack-based esoteric programming language written as Unicode
+sheet music. Notes, accidentals, chords, barlines, repeats, volta endings and
+navigation marks form executable programs on a ten-row staff.
+
+The language is deterministic and intentionally small. A score is a UTF-8 text
+file, so programs can be versioned, reviewed and run without image recognition
+or a music engraving system.
+
+## Quick start
+
+Staffcode requires Python 3.10 or newer and has no runtime dependencies.
+
+```bash
+python3 -m pip install -e .
+staffcode examples/mozart.staff
+```
+
+The first example prints `Mozart` without an added newline. Programs read their
+input from standard input:
+
+```bash
+staffcode examples/shared-input-cursor.staff \
+  < examples/shared-input-cursor.in
+```
+
+You can also run the package without installing it:
+
+```bash
+PYTHONPATH=src python3 -m staffcode examples/chord.staff
+```
+
+## Inspecting a score
+
+`inspect` parses a score and prints its executable instruction stream. This is
+useful when a font makes musical symbols appear wider than their logical cells.
+
+```bash
+staffcode inspect examples/chord.staff
+staffcode check examples/mozart.staff
+```
+
+`check` validates the file and reports its instruction count without executing
+it.
+
+## The grid
+
+A score contains one or more systems. Every system starts with `STAFF`, followed
+by ten framed rows. The rows run from G5 (value 9) at the top to E4 (value 0) at
+the bottom. Odd-numbered rows are staff lines and use `-` as background; even
+rows use a space.
+
+```text
+STAFF
+| top row: G5 / value 9 |
+|-----------------------|
+| row 2: E5 / value 7   |
+|-----------------------|
+| row 4: C5 / value 5   |
+|-----------------------|
+| row 6: A4 / value 3   |
+|-----------------------|
+| row 8: F4 / value 1   |
+|-----------------------|
+```
+
+The text above is illustrative rather than executable. See `examples/*.staff`
+for valid scores.
+
+Staffcode normalizes source text to Unicode NFD and counts logical cells, not
+terminal columns. A cell is a base code point plus its following musical stem
+and flag marks. Use a monospaced editor font with Musical Symbols support for
+the most readable source, but visual alignment is not part of parsing.
+
+## Instruction families
+
+The vertical position of a note supplies a value. Its shape selects what that
+value means:
+
+| Notation | Meaning |
+| --- | --- |
+| Quarter note | Push its value; aligned quarter notes form a chord and push their sum |
+| Eighth note | Arithmetic, stack manipulation or output selected by its value |
+| Half note | Comparison or input selected by its value |
+| Sharp / flat / natural | Set the active row offset to +1 / -1 / 0 |
+| Dot | Execute the decoded action twice |
+| Full-height `|` | Barline; restore active offsets from the key signature |
+
+Eighth-note selectors cover addition, subtraction, multiplication, floor
+division, modulo, duplicate, swap, drop, character output and integer output.
+Half-note selectors cover equality, greater-than, logical not, integer input and
+character input.
+
+Control flow uses musical marks on the B4 row:
+
+| Marker | Meaning |
+| --- | --- |
+| `𝄆 ... 𝄇` | Counted repetition |
+| `①` ... `④` | Volta endings |
+| `? : ;` | Conditional, optional else and end |
+| `𝄋 𝄉 @ 𝄌` | Segno, D.S., To Coda and coda |
+
+The complete rules, including malformed-score handling, stack underflow,
+accidental state, navigation and execution limits, are normative in
+[`SPEC.md`](SPEC.md).
+
+## Examples
+
+Each example consists of a `.staff` program and matching `.in`/`.out` files.
+
+| Example | Demonstrates |
+| --- | --- |
+| `mozart` | Character output and a multi-system score |
+| `chord` | A literal chord and integer output |
+| `dotted-chord` | Dotted execution |
+| `bar-resets` | Persistent accidentals and barline reset |
+| `loop-state` | Repetition with mutable accidental state |
+| `nested-repeats` | Nested control flow |
+| `nested-skipped-blocks` | Conditional skipping across nested blocks |
+| `shared-input-cursor` | Integer and character input sharing one cursor |
+| `unicode-character` | Unicode scalar input and output |
+| `key-signature` | Key signatures and barline restoration |
+| `volta` | Numbered endings and pass selection |
+| `dal-segno` | D.S. replay and To Coda |
+
+Run all examples and the conformance fixtures with:
+
+```bash
+python3 -m pip install -e '.[dev]'
+pytest
+```
+
+## Writing programs
+
+1. Start from a small file in `examples/` and preserve its eleven-line system
+   structure.
+2. Place events in source order from left to right, then continue in the next
+   system.
+3. Use `staffcode check PROGRAM` after structural edits.
+4. Use `staffcode inspect PROGRAM` to verify decoded values and control marks.
+5. Keep `.in` and `.out` files beside examples so behavior remains executable
+   documentation.
+
+## Project status
+
+This is the first public reference implementation of an experimental language.
+The interpreter follows version 1 of the bundled specification. Backward
+compatibility is not promised before a stable release, so language changes
+should update `SPEC.md`, tests and examples together.
+
+## License
+
+Staffcode is available under the MIT License. See [`LICENSE`](LICENSE).
