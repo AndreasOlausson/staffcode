@@ -123,6 +123,12 @@ Each example consists of a `.staff` program and matching `.in`/`.out` files.
 | `key-signature` | Key signatures and barline restoration |
 | `volta` | Numbered endings and pass selection |
 | `dal-segno` | D.S. replay and To Coda |
+| `99-bottles` | A complete 99-iteration program with dynamic text and singular/plural branches |
+
+The advanced [`99-bottles.staff`](examples/99-bottles.staff) example keeps its
+counter on the stack and uses one counted repeat for the verses. It generates
+the complete output rather than storing 99 copies of the text. See
+[`examples/99-bottles.md`](examples/99-bottles.md) for its structure and size.
 
 Run all examples and the conformance fixtures with:
 
