@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 - 2026-09-26
+## 0.0.1 - 2026-09-28
 
 - Publish the first reference implementation and language specification.
 - Include arithmetic, stack operations, input/output and Unicode characters.

@@ -17,7 +17,7 @@ Pairs of characters are pushed in reverse order and emitted by one dotted
 WRITE CHARACTER instruction, which executes twice. This reduces the source
 without embedding repeated verses.
 
-Measured against Staffcode 0.1.0:
+Measured against Staffcode 0.0.1:
 
 | Property | Value |
 | --- | ---: |
