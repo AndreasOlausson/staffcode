@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Clarify that 100,000 execution steps is the minimum portable profile, not a
+  limit imposed by the Staffcode language.
+
 ## 0.0.1 - 2026-09-28
 
 - Publish the first reference implementation and language specification.

@@ -229,17 +229,27 @@ instructions between that To Coda and the coda label are therefore not executed
 on the replay pass. Without a coda pair, reaching D.S. for the second time is a
 no-op that ends D.S. replay, and execution continues after it.
 
-## Conformance envelope
+## Portability and resource limits
 
-Programs are well-formed and terminate. They contain at most 200,000 code
-points before normalization, 128 systems and 8,192 interior columns per system,
-and nest blocks at most 64 deep. Execution takes at most 100,000 steps, counted
-as follows: each half of an executed note event (so a dotted event counts two),
-each executed barline or key-signature event, each executed `𝄆` or `?`, each reached navigation
-marker, and each completed iteration of a repetition body. A repeat body
+Staffcode places no semantic limit on the number of execution steps. A program
+that needs more than 100,000 steps is still a valid Staffcode program.
+Implementations may enforce documented resource limits, but reaching one must
+be reported as an implementation error rather than as normal program output.
+
+For portability, every conforming implementation must correctly execute
+well-formed programs within this minimum profile: at most 200,000 code points
+before normalization, 128 systems, 8,192 interior columns per system and blocks
+nested at most 64 deep; up to and including 100,000 execution steps; a stack of
+at most 4,096 items; values of at most 4,096 bits in magnitude; and input and
+output of at most 64 KiB of valid UTF-8. Input contains Unicode scalar values.
+Programs outside this profile remain valid, but their resource requirements may
+exceed an implementation's documented limits.
+
+For the portable profile, each half of an executed note event counts as one
+step, so a dotted event counts as two. Each executed barline or key-signature
+event, each executed `𝄆` or `?`, each reached navigation marker and each
+completed iteration of a repetition body also counts as one step. A repeat body
 executed once during D.S. replay adds no completed-iteration step. Skipped code,
-blank columns, volta labels, `:`, `;` and `𝄇` add no further steps. The stack never exceeds
-4,096 items; values never exceed 4,096
-bits in magnitude. Input and output are each at most 64 KiB of valid UTF-8.
-Input contains Unicode scalar values. Semantic no-ops described above remain in
-scope, even though malformed syntax is outside it.
+blank columns, volta labels, `:`, `;` and `𝄇` add no further steps. Semantic
+no-ops described above remain in the profile, even though malformed syntax does
+not.

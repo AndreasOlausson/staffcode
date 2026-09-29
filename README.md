@@ -102,7 +102,7 @@ Control flow uses musical marks on the B4 row:
 | `𝄋 𝄉 @ 𝄌` | Segno, D.S., To Coda and coda |
 
 The complete rules, including malformed-score handling, stack underflow,
-accidental state, navigation and execution limits, are normative in
+accidental state, navigation and the minimum portability profile, are normative in
 [`SPEC.md`](SPEC.md).
 
 ## Examples
