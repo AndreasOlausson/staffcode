@@ -1,0 +1,69 @@
+(Rockstar writes the score. Staffcode plays it.)
+
+Modulus takes the number and the divisor
+While the number is as high as the divisor
+Put the number without the divisor into the number
+End
+Give back the number
+End
+
+Compose takes the melody, the harmony and the symbol
+The system says STAFF
+Rock the system with 10
+For the line in 10
+Put the line into the pitch
+If the pitch is the melody or the pitch is the harmony
+Put the symbol into the cell
+Else
+If modulus taking the pitch, 2 is 0
+Put " " into the cell
+Else
+Put "-" into the cell
+End
+End
+Put "|" with the cell with "|" into the row
+Put the system with the row into the system
+Rock the system with 10
+End
+Rock the music with the system
+End
+
+(Turn one Unicode value into decimal Staffcode arithmetic.)
+Encode takes the code
+Put the code with silence into the digits
+The place is 0
+For the digit in the digits
+Cast the digit into the value with 10
+If the place is 0
+Put 9 without the value into the melody
+Compose taking the melody, -1, the quarter
+Else
+Compose taking 0, 8, the quarter
+Compose taking 7, -1, the eighth
+Put 9 without the value into the melody
+Compose taking the melody, -1, the quarter
+Compose taking 9, -1, the eighth
+End
+Build the place up
+End
+Compose taking 1, -1, the eighth
+End
+
+Let the quarter be "𝅘𝅥"
+Let the eighth be "𝅘𝅥𝅮"
+Rock the music
+The message says Hello from Rockstar!
+(The first command line argument replaces the default lyric.)
+If arguments
+Put arguments at 0 into the message
+End
+
+For the letter in the message
+Cast the letter into the code
+Encode taking the code
+End
+
+The break is silent
+Rock the break with 10
+Join the music into the score with the break
+Write the score
