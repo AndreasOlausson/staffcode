@@ -1,7 +1,7 @@
 # 99 Bottles
 
 `99-bottles.staff` is the largest bundled example and a compact demonstration
-of Staffcode as a real programming language rather than a text encoding.
+of Stackoda as a real programming language rather than a text encoding.
 
 The program:
 
@@ -17,7 +17,7 @@ Pairs of characters are pushed in reverse order and emitted by one dotted
 WRITE CHARACTER instruction, which executes twice. This reduces the source
 without embedding repeated verses.
 
-Measured against Staffcode 0.0.1:
+Measured against Stackoda 0.0.2:
 
 | Property | Value |
 | --- | ---: |
@@ -30,7 +30,7 @@ Measured against Staffcode 0.0.1:
 Run it with:
 
 ```bash
-staffcode examples/99-bottles.staff
+stackoda examples/99-bottles.staff
 ```
 
 The matching `99-bottles.out` file is the executable expected result used by

@@ -3,8 +3,8 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "staffcode-lang"
-version = "0.0.1"
+name = "stackoda"
+version = "0.0.2"
 description = "A stack-based esoteric programming language written as Unicode sheet music"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -22,7 +22,7 @@ dependencies = []
 dev = ["pytest>=8"]
 
 [project.scripts]
-staffcode = "staffcode.cli:main"
+stackoda = "stackoda.cli:main"
 
 [tool.setuptools]
 package-dir = { "" = "src" }

@@ -1,4 +1,4 @@
-"""Command-line interface for the Staffcode interpreter."""
+"""Command-line interface for the Stackoda interpreter."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ PITCHES = ("E4", "F4", "G4", "A4", "B4", "C5", "D5", "E5", "F5", "G5")
 
 
 def _usage() -> str:
-    return "usage: staffcode PROGRAM\n       staffcode check PROGRAM\n       staffcode inspect PROGRAM"
+    return "usage: stackoda PROGRAM\n       stackoda check PROGRAM\n       stackoda inspect PROGRAM"
 
 
 def _read_program(path: str) -> list[tuple]:

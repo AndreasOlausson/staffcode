@@ -1,4 +1,4 @@
-(Rockstar writes the score. Staffcode plays it.)
+(Rockstar writes the score. Stackoda plays it.)
 
 Modulus takes the number and the divisor
 While the number is as high as the divisor
@@ -28,7 +28,7 @@ End
 Rock the music with the system
 End
 
-(Turn one Unicode value into decimal Staffcode arithmetic.)
+(Turn one Unicode value into decimal Stackoda arithmetic.)
 Encode takes the code
 Put the code with silence into the digits
 The place is 0

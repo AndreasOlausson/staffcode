@@ -1,6 +1,6 @@
 # Contributing
 
-Changes are welcome while Staffcode is experimental. A language change should
+Changes are welcome while Stackoda is experimental. A language change should
 update `SPEC.md`, the reference interpreter, at least one semantic fixture and
 an example when the feature is useful to programmers.
 

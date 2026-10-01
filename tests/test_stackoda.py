@@ -9,7 +9,7 @@ import pytest
 
 from case_builders import all_sources_within_envelope, anchors, conformance_cases
 from reference_model import evaluate, render
-from staffcode import execute, parse
+from stackoda import execute, parse
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -52,7 +52,7 @@ def test_canonical_note_spellings() -> None:
 
 def test_module_cli() -> None:
     result = subprocess.run(
-        [sys.executable, "-m", "staffcode", str(EXAMPLES / "mozart.staff")],
+        [sys.executable, "-m", "stackoda", str(EXAMPLES / "mozart.staff")],
         check=False,
         capture_output=True,
     )
@@ -63,7 +63,7 @@ def test_module_cli() -> None:
 
 def test_inspect_cli() -> None:
     result = subprocess.run(
-        [sys.executable, "-m", "staffcode", "inspect", str(EXAMPLES / "chord.staff")],
+        [sys.executable, "-m", "stackoda", "inspect", str(EXAMPLES / "chord.staff")],
         check=False,
         capture_output=True,
         text=True,

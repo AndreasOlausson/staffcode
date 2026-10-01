@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Unicode grid parser and iterative virtual machine for Staffcode."""
+"""Unicode grid parser and iterative virtual machine for Stackoda."""
 
 from __future__ import annotations
 
@@ -320,7 +320,7 @@ def execute(code: list[tuple], data: str = "") -> tuple[str, list[int], int]:
 
 def main() -> int:
     if len(sys.argv) != 2:
-        print("usage: staffcode PROGRAM", file=sys.stderr)
+        print("usage: stackoda PROGRAM", file=sys.stderr)
         return 2
     try:
         source = Path(sys.argv[1]).read_bytes().decode("utf-8")

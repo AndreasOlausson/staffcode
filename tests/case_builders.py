@@ -1,4 +1,4 @@
-"""Deterministic Staffcode conformance programs built from a separate model."""
+"""Deterministic Stackoda conformance programs built from a separate model."""
 
 from __future__ import annotations
 

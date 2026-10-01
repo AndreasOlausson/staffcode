@@ -1,11 +1,11 @@
-# Staffcode language specification
+# Stackoda language specification
 
-Staffcode is a stack language written on a Unicode musical staff. These are
+Stackoda is a stack language written on a Unicode musical staff. These are
 programming rules, not a claim to reproduce conventional musical notation.
 
 ## Running a program
 
-Run `staffcode PROGRAM`, where PROGRAM is the path to a score. Program
+Run `stackoda PROGRAM`, where PROGRAM is the path to a score. Program
 input is UTF-8 on stdin. Output is UTF-8 on stdout, with no automatic separator
 or newline. Normal completion exits 0. An empty program outputs nothing:
 this covers both a zero-byte file and systems that contain no events.
@@ -105,7 +105,7 @@ A dot executes the decoded action twice consecutively. Decode once: apply
 explicit accidentals once, determine the literal value or operation once,
 then run that action twice. The second action sees the first action's stack
 and input effects. A dotted chord pushes its sum twice, not twice its sum.
-This is a Staffcode rule rather than the musical 3/2-duration convention.
+This is a Stackoda rule rather than the musical 3/2-duration convention.
 
 ## Operations
 
@@ -231,8 +231,8 @@ no-op that ends D.S. replay, and execution continues after it.
 
 ## Portability and resource limits
 
-Staffcode places no semantic limit on the number of execution steps. A program
-that needs more than 100,000 steps is still a valid Staffcode program.
+Stackoda places no semantic limit on the number of execution steps. A program
+that needs more than 100,000 steps is still a valid Stackoda program.
 Implementations may enforce documented resource limits, but reaching one must
 be reported as an implementation error rather than as normal program output.
 
